@@ -17,10 +17,7 @@ A minimalist, keyboard-driven application launcher widget inspired by **MAKO** (
 ### From Source
 
 ```bash
-git clone https://github.com/calamytryx/musang.git
-cd musang
-mkdir -p ~/.local/share/plasma/plasmoids/
-cp -r musang ~/.local/share/plasma/plasmoids/musang
+git clone https://github.com/calamytryx/musang.git ~/.local/share/plasma/plasmoids/musang
 ```
 
 Then add the widget to your panel or desktop.

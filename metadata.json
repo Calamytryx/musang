@@ -11,7 +11,7 @@
     "Icon": "musang",
     "Id": "musang",
     "Keywords": "launcher,search,app,application,mako,text-based",
-    "License": "LGPL-2.0+",
+    "License": "GPL-3.0-or-later",
     "Name": "Musang",
     "ServiceTypes": ["Plasma/Applet"],
     "Version": "1.0.0",
