@@ -1,6 +1,6 @@
 # Musang — A Text-Based App Launcher for KDE Plasma
 
-A minimalist, keyboard-driven application launcher widget inspired by **MAKO** by rama-io and adapted for KDE Plasma.
+A minimalist, keyboard-driven application launcher widget inspired by **MAKO** (by [rama-io](https://github.com/rama-io/mako))
 
 **Disclaimer:** This project is independent and is not affiliated with the original MAKO project.
 
@@ -79,7 +79,7 @@ Customize:
 
 ## Attribution
 
-Inspired by **MAKO Launcher** by rama-io.
+Based on **MAKO Launcher** by [rama-io](https://github.com/rama-io/mako)
 
 ## License
 
