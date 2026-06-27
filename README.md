@@ -1,99 +1,92 @@
 # Musang — A Text-Based App Launcher for KDE Plasma
 
-A minimalist, keyboard-driven application launcher widget inspired by **MAKO** (by [rama-io](https://github.com/rama-io/mako)) — brought to KDE Plasma.
+A minimalist, keyboard-driven application launcher widget inspired by **MAKO** by rama-io and adapted for KDE Plasma.
+
+**Disclaimer:** This project is independent and is not affiliated with the original MAKO project.
 
 ## Features
 
-- **Text-based interface** — clean, distraction-free design
-- **System info at a glance** — clock, date, battery status, charge/discharge rate
-- **Smart app organization** — groups apps automatically from KDE's `.directory` files
-- **Instant search** — type to filter across all categories
-- **Expandable groups** — collapse/expand categories on demand
-- **Fully customizable** — colors, fonts, sizes, background
-- **Zero dependencies** — pure KDE Plasma technology
+* **Text-based interface** — clean, keyboard-first experience
+* **System info at a glance** — clock, date, battery status, and power information
+* **Automatic app grouping** — organizes applications using KDE application categories
+* **Instant search** — filter apps across all groups in real time
+* **Expandable sections** — collapse or expand groups as needed
+* **Fully customizable** — colors, fonts, icon, sizing, and appearance
+* **Native Plasma integration** — built entirely with KDE Plasma technologies
 
 ## Installation
 
-### From Source
+### Install from Source
 
 ```bash
-git clone https://github.com/calamytryx/musang.git ~/.local/share/plasma/plasmoids/musang
+git clone https://github.com/calamytryx/musang.git
+
+kpackagetool6 -t Plasma/Applet -i musang
 ```
 
-Then add the widget to your panel or desktop.
+Reload Plasma if needed:
 
-### Via KDE Store
+```bash
+kquitapp6 plasmashell && kstart6 plasmashell
+```
 
-(Link coming soon)
+Then add **Musang** from **Add Widgets**.
+
+### Manual Installation
+
+```bash
+git clone https://github.com/calamytryx/musang.git \
+~/.local/share/plasma/plasmoids/musang
+```
 
 ## Usage
 
-### Opening the Launcher
-- Click the widget icon in your panel
-- Search box auto-focuses — start typing immediately
-- Press `Escape` to close
+### Open Launcher
+
+* Click the widget icon
+* Search starts immediately
+* Press `Escape` to close
 
 ### Navigation
-- **Click group names** — expand/collapse categories
-- **Click apps** — launch instantly
-- **Search** — type app name to filter across all groups
 
-### Customization
+* Click group titles → expand/collapse
+* Click applications → launch
+* Type → search globally
 
-Right-click the widget → **Configure**:
-- Icon, fonts, colors
-- Clock/date/battery display
-- Group styling
+### Configure
 
-### App Organization
+Right-click → **Configure Musang**
 
-Apps are organized using KDE's `.directory` files in `~/.local/share/desktop-directories/`:
+Customize:
 
-```
-~/.local/share/desktop-directories/
-├── kf5-development.directory      → Development apps
-├── kf5-games.directory            → Games
-├── kf5-internet.directory         → Internet & networking
-├── kf5-multimedia.directory       → Audio, video, music
-├── kf5-office.directory           → Office apps
-├── kf5-utilities.directory        → Utilities
-└── ... (customize by creating/editing .directory files)
-```
-
-To add a custom group, create a `.directory` file:
-```ini
-[Desktop Entry]
-Name=My Custom Group
-Icon=applications-custom
-Type=Directory
-```
+* Icon
+* Fonts
+* Colors
+* Clock and battery display
+* Group appearance
 
 ## Architecture
 
-- **QML/Qt 6** — responsive, theme-integrated UI
-- **Python scanning** — intelligent app categorization
-- **KDE Plasma integration** — native configuration, theming
+* **QML / Qt 6**
+* **KDE Plasma Framework**
+* **Python indexing and grouping**
 
 ## Requirements
 
-- KDE Plasma 6.x
-- Qt 6.x
-- Python 3.x
+* KDE Plasma 6+
+* Qt 6+
+* Python 3
 
-## Attributions
+## Attribution
 
-Based on **MAKO Launcher** by [rama-io](https://github.com/rama-io/mako)
-
-Licensed under the same terms as the original MAKO.
+Inspired by **MAKO Launcher** by rama-io.
 
 ## License
 
-[Same as MAKO — check original project]
+Licensed under **GPL-3.0-or-later**.
+
+See `LICENSE`.
 
 ## Contributing
 
-Bug reports and suggestions welcome! Open an issue or reach out.
-
----
-
-**Built with ❤️ for KDE Plasma**
+Issues and pull requests are welcome.
