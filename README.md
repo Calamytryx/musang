@@ -8,11 +8,24 @@ A minimalist, keyboard-driven application launcher widget inspired by **MAKO** (
 
 ## Preview
 
-![Musang](musang.png)
+## Preview
 
-![Preview](Preview.png)
+<p align="center">
+  <img src="musang.png" width="900">
+</p>
 
-![Preview 2](Preview%202.png)
+<table align="center">
+<tr>
+<td align="center">
+<img src="Preview.png" width="100%">
+</td>
+
+<td align="center">
+<img src="Preview%202.png" width="100%">
+</td>
+</tr>
+</table>
+
 
 ## Features
 
