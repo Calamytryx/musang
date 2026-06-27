@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+
+  <kcfgfile name=""/>
+
+  <group name="General">
+
+    <!-- Widget icon shown in the panel/taskbar -->
+    <entry name="plasmoidIcon" type="String">
+      <label>Widget icon name</label>
+      <default>view-list-text</default>
+    </entry>
+
+    <!-- Session Management name -->
+    <entry name="powerGroupName" type="String">
+      <label>Power group name</label>
+      <default>Power</default>
+    </entry>
+
+    <!-- Global font family applied to every text element -->
+    <entry name="globalFontFamily" type="String">
+      <label>Global font family</label>
+      <default>Sans Serif</default>
+    </entry>
+
+    <!-- Whether to draw Plasma's own panel/popup background behind the widget -->
+    <entry name="showPlasmaBackground" type="Bool">
+      <label>Show Plasma's own background frame</label>
+      <default>false</default>
+    </entry>
+
+    <!-- Widget's own background color (separate from Plasma's background) -->
+    <entry name="widgetBackgroundColor" type="String">
+      <label>Launcher background color</label>
+      <whatsthis>Leave empty to use the theme's default background color</whatsthis>
+      <default></default>
+    </entry>
+
+    <!-- Clock -->
+    <entry name="clockFontSize" type="Double">
+      <label>Clock font size (gridUnits)</label>
+      <default>3.0</default>
+    </entry>
+    <entry name="clockFontColor" type="String">
+      <label>Clock font color</label>
+      <default></default>
+    </entry>
+
+    <!-- Date line -->
+    <entry name="dateFontSize" type="Double">
+      <label>Date font size (gridUnits)</label>
+      <default>1.0</default>
+    </entry>
+    <entry name="dateFontColor" type="String">
+      <label>Date font color</label>
+      <default></default>
+    </entry>
+
+    <!-- Battery line -->
+    <entry name="batteryFontSize" type="Double">
+      <label>Battery font size (gridUnits)</label>
+      <default>0.9</default>
+    </entry>
+    <entry name="batteryFontColor" type="String">
+      <label>Battery font color</label>
+      <default></default>
+    </entry>
+
+    <!-- Group headers -->
+    <entry name="groupHeaderFontSize" type="Double">
+      <label>Group header font size (gridUnits)</label>
+      <default>1.1</default>
+    </entry>
+    <entry name="groupHeaderFontColor" type="String">
+      <label>Group header font color</label>
+      <default></default>
+    </entry>
+    <entry name="groupHeaderBackgroundColor" type="String">
+      <label>Group header background color</label>
+      <default></default>
+    </entry>
+
+    <!-- App / group items -->
+    <entry name="groupItemFontSize" type="Double">
+      <label>App item font size (gridUnits)</label>
+      <default>1.0</default>
+    </entry>
+    <entry name="groupItemFontColor" type="String">
+      <label>App item font color</label>
+      <default></default>
+    </entry>
+    <entry name="groupItemBackgroundColor" type="String">
+      <label>App item background color</label>
+      <default></default>
+    </entry>
+
+    <!-- Search box -->
+    <entry name="searchFontSize" type="Double">
+      <label>Search box font size (gridUnits)</label>
+      <default>1.0</default>
+    </entry>
+    <entry name="searchFontColor" type="String">
+      <label>Search box font color</label>
+      <default></default>
+    </entry>
+    <entry name="searchBackgroundColor" type="String">
+      <label>Search box background color</label>
+      <default></default>
+    </entry>
+
+    <!-- The entire app group tree, stored as a JSON string.
+         Structure: [ { name, expanded, apps: [ {name}, ... ], subgroups: [ {name, expanded, apps:[...]} , ... ] }, ... ] -->
+    <entry name="appGroupsJson" type="String">
+      <label>App groups data (JSON)</label>
+      <default>[]</default>
+    </entry>
+
+  </group>
+</kcfg>

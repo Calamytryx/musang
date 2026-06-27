@@ -1,0 +1,25 @@
+{
+  "KPlugin": {
+    "Authors": [
+      {
+        "Email": "calamytymytryx@gmail.com",
+        "Name": "Calamytryx"
+      }
+    ],
+    "Category": "Application Launchers",
+    "Description": "Text-based application launcher for KDE Plasma, inspired by MAKO by rama-io.\n\nFeatures:\n• Integrated clock, date, battery display\n• Instant search across all apps\n• Smart organization via KDE .directory files\n• Fully customizable colors, fonts, sizes\n• Expandable/collapsible category groups\n• Lightweight and keyboard-friendly",
+    "Icon": "musang",
+    "Id": "musang",
+    "Keywords": "launcher,search,app,application,mako,text-based",
+    "License": "LGPL-2.0+",
+    "Name": "Musang",
+    "ServiceTypes": ["Plasma/Applet"],
+    "Version": "1.0.0",
+    "Website": "https://github.com/Calamytryx/musang"
+  },
+  "X-Plasma-API-Minimum-Version": "6.0",
+  "X-Plasma-Provides": ["org.kde.plasma.launchermenu"],
+  "X-KDE-PluginInfo-Category": "Application Launchers",
+  "X-KDE-PluginInfo-Depends": [],
+  "X-KDE-PluginInfo-EnabledByDefault": true
+}
