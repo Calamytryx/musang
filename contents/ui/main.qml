@@ -301,6 +301,33 @@ PlasmoidItem {
         if (cmd) launchSource.connectSource(cmd)
     }
 
+    // Flat list of power actions, used only for search matching (never
+    // injected into the default/unfiltered list) so that pressing Enter on
+    // an empty query can only ever launch an app, not trigger shutdown/etc.
+    readonly property var powerOptionsList: [
+        { name: "Sleep",     action: "sleep",     icon: "⏾" },
+        { name: "Hibernate", action: "hibernate", icon: "❄" },
+        { name: "Shutdown",  action: "shutdown",  icon: "⏻" },
+        { name: "Restart",   action: "restart",   icon: "↻" },
+        { name: "Logout",    action: "logout",    icon: "↩" }
+    ]
+
+    // Fires the first non-group row currently visible in the results list
+    // (an app, or — only when it's a search match — a power action). Group
+    // headers are always skipped.
+    function launchFirstResult() {
+        for (let i = 0; i < displayRows.length; i++) {
+            let row = displayRows[i]
+            if (row.kind === "app") {
+                launchApp(row.exec)
+                return
+            } else if (row.kind === "power") {
+                powerAction(row.action)
+                return
+            }
+        }
+    }
+
     readonly property var displayRows: (function() {
         let q = searchText.trim().toLowerCase()
         if (q === "") return flatRows
@@ -356,7 +383,18 @@ PlasmoidItem {
                 let res = processNode(appGroups[i], 0, String(i))
                 results = results.concat(res.rows)
             }
-            return results
+            // Fold in matching power actions (search-only, see comment above).
+            let powerMatches = root.powerOptionsList
+                .filter(p => p.name.toLowerCase().indexOf(q) !== -1)
+                .map(p => ({
+                    kind: "power",
+                    depth: 0,
+                    name: p.name,
+                    action: p.action,
+                    icon: p.icon,
+                    keyPath: "power." + p.action
+                }))
+            return results.concat(powerMatches)
     })()
 
     fullRepresentation: Rectangle {
@@ -501,13 +539,7 @@ PlasmoidItem {
                     spacing: Kirigami.Units.smallSpacing / 2
 
                     Repeater {
-                        model: [
-                            { name: "⏾ Sleep",      action: "sleep" },
-                            { name: "❄ Hibernate",  action: "hibernate" },
-                            { name: "⏻ Shutdown",   action: "shutdown" },
-                            { name: "↻ Restart",    action: "restart" },
-                            { name: "↩ Logout",     action: "logout" }
-                        ]
+                        model: root.powerOptionsList
 
                         delegate: MouseArea {
                             width: parent.width
@@ -534,7 +566,7 @@ PlasmoidItem {
                                     Kirigami.Units.largeSpacing
                                     verticalCenter: parent.verticalCenter
                                 }
-                                text: modelData.name
+                                text: modelData.icon + " " + modelData.name
                                 font.family: bg.gFont
                                 font.pixelSize: Kirigami.Units.gridUnit *
                                 (plasmoid.configuration.groupItemFontSize || 1.0)
@@ -587,8 +619,10 @@ PlasmoidItem {
                             onClicked: {
                                 if (modelData.kind === "group")
                                     root.toggleByKey(modelData.keyPath)
-                                    else
-                                        root.launchApp(modelData.exec)
+                                    else if (modelData.kind === "power")
+                                        root.powerAction(modelData.action)
+                                        else
+                                            root.launchApp(modelData.exec)
                             }
 
                             Rectangle {
@@ -618,6 +652,8 @@ PlasmoidItem {
                                 }
                                 text: modelData.kind === "group"
                                 ? ((modelData.expanded ? "[-] " : "[+] ") + modelData.name)
+                                : modelData.kind === "power"
+                                ? (modelData.icon + " " + modelData.name)
                                 : modelData.name
                                 font.family: bg.gFont
                                 font.pixelSize: Kirigami.Units.gridUnit *
@@ -647,6 +683,8 @@ PlasmoidItem {
                     font.pixelSize: Kirigami.Units.gridUnit * (plasmoid.configuration.searchFontSize || 1.0)
                     color: root.colorOr(plasmoid.configuration.searchFontColor, Kirigami.Theme.textColor)
                     onTextChanged: root.searchText = text
+                    Keys.onReturnPressed: root.launchFirstResult()
+                    Keys.onEnterPressed: root.launchFirstResult()
                     Component.onCompleted: {
                         root.searchInputRef = searchInput
                         forceActiveFocus()
